@@ -9,7 +9,7 @@
 <body>
     <div style="width:100%;display:flex;justify-content: center;align-items: center;">
                 
-        <form action="/app/login/" method="POST">
+        <form action="/admin/" method="POST">
                 {% csrf_token %}
                 <div style="text-align:left"> 
                 <h1>用户登陆</h1>  
@@ -17,7 +17,7 @@
                 <td>
                 <select name="loc">
                 <option>-请选择-</option>
-                <option>用户登陆</option>
+                <!-- <option>用户登陆</option> -->
                 <option>管理员登陆</option>
                 <option>配送员登陆</option>
                 </select>

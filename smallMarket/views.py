@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
-import sugarMarket.models
+from .models import Good,Customer,Order,OrderItem
 
 # Create your views here.
-
+idofGoodList=list()
 def gotoHead(request):
     return render(request, 'head.html')
 
@@ -38,14 +38,26 @@ def detail(request,nameofGood):
     content['picPath']=picPath
     return render(request, 'detail.html',content)
 
-def setCookie(request,idofGood):
+def setSession(request,idofGood):
     rep = redirect ('/sugarMarket/')
-    rep.set_cookie('idofGood'+str(idofGood),idofGood)
+    # idofGoodList=list()
+    idofGoodList.append(idofGood)
+    request.session['idofGoodList']=idofGoodList
+    # rep.set_cookie('idofGoodList',idofGoodList)
     return rep
+# def addToCart(request,idofGood):
 
 def shopcart(request):
+    idofGoodList=request.session.get('idofGoodList')
+    idod=idofGoodList
+    # looo=[1,1,2,5,6]
+    glist=[]
     content=dict()
-    vals=request.session.get('goods', None)
-    for value in vals.values():
-        content['id']=vals.idofGood
-    return render(request, 'shopcart.html', {'content':content})
+    for index in range(len(idod)):
+        glist.append(Good.objects.get(id=idod[index]))
+    content['good']=glist
+    return render(request, 'shopcart.html', content)
+
+
+def login(request):
+        return render(request, 'login.html')
