@@ -150,7 +150,7 @@
                     <h1>水饮</h1>
                 </div>
                 {% for waterGood in waterList %}
-                <a href="/smallMarket/detail/"+{{waterGood.name}}><div class='theprod'>
+                <a href="/sugarMarket/detail/{{ waterGood.goodName }}/"><div class='theprod'>
                     <img src="/static/good_images/{{ waterGood.goodPicPath }}" alt="">
                     <p class="p1">{{ waterGood.goodName }}</p>
                     <p class="p2">￥{{waterGood.goodSalePrice}}</p>
@@ -164,7 +164,7 @@
                     <h1>奶品</h1>
                 </div>
                 {% for milkGood in milkList %}
-                <a href="/smallMarket//detail/"+{{milkGood.name}}><div class='theprod'>
+                <a href="/sugarMarket/detail/{{ milkGood.goodName }}/"><div class='theprod'>
                     <img src="/static/good_images/{{ milkGood.goodPicPath }}" alt="">
                     <p class="p1">{{ milkGood.goodName }}</p>
                     <p class="p2">￥{{milkGood.goodSalePrice}}</p>
@@ -178,7 +178,7 @@
                     <h1>酒</h1>
                 </div>
                 {% for wineGood in wineList %}
-                <a href="/smallMarket//detail/"+{{wineGood.name}}><div class='theprod'>
+                <a href="/sugarMarket/detail/{{ wineGood.goodName }}/"><div class='theprod'>
                     <img src="/static/good_images/{{ wineGood.goodPicPath }}" alt="">
                     <p class="p1">{{ wineGood.goodName }}</p>
                     <p class="p2">￥{{wineGood.goodSalePrice}}</p>
@@ -192,7 +192,7 @@
                     <h1>方便速食</h1>
                 </div>
                 {% for snackGood in snackList %}
-                <a href="/smallMarket/detail/"+{{snackGood.name}}><div class='theprod'>
+                <a href="/sugarMarket/detail/{{ snackGood.goodName }}/"><div class='theprod'>
                     <img src="/static/good_images/{{ snackGood.goodPicPath }}" alt="">
                     <p class="p1">{{ snackGood.goodName }}</p>
                     <p class="p2">￥{{snackGood.goodSalePrice}}</p>
@@ -206,7 +206,7 @@
                     <h1>饼干/蛋糕</h1>
                 </div>
                 {% for cakeGood in cakeList %}
-                <a href="/smallMarket/detail/"+{{cakeGood.name}}><div class='theprod'>
+                <a href="/sugarMarket/detail/{{ cakeGood.goodName }}/"><div class='theprod'>
                     <img src="/static/good_images/{{ cakeGood.goodPicPath }}" alt="">
                     <p class="p1">{{ cakeGood.goodName }}</p>
                     <p class="p2">￥{{cakeGood.goodSalePrice}}</p>
@@ -220,7 +220,7 @@
                     <h1>膨化食品</h1>
                 </div>
                 {% for foodGood in foodList %}
-                <a href="/smallMarket/detail/"+{{foodGood.name}}><div class='theprod'>
+                <a href="/sugarMarket/detail/{{ foodGood.goodName }}/"><div class='theprod'>
                     <img src="/static/good_images/{{ foodGood.goodPicPath }}" alt="">
                     <p class="p1">{{ foodGood.goodName }}</p>
                     <p class="p2">￥{{foodGood.goodSalePrice}}</p>
@@ -234,7 +234,7 @@
                     <h1>坚果</h1>
                 </div>
                 {% for hardGood in hardList %}
-                <a href="/smallMarket/detail/"+{{hardGood.name}}><div class='theprod'>
+                <a href="/sugarMarket/detail/{{ hardGood.goodName }}/"><div class='theprod'>
                     <img src="/static/good_images/{{ hardGood.goodPicPath }}" alt="">
                     <p class="p1">{{ hardGood.goodName }}</p>
                     <p class="p2">￥{{hardGood.goodSalePrice}}</p>
@@ -248,7 +248,7 @@
                     <h1>个人日用</h1>
                 </div>
                 {% for selfGood in selfList %}
-                <a href="/smallMarket/detail/"+{{selfGood.name}}><div class='theprod'>
+                <a href="/sugarMarket/detail/{{ selfGood.goodName }}/"><div class='theprod'>
                     <img src="/static/good_images/{{ selfGood.goodPicPath }}" alt="">
                     <p class="p1">{{ selfGood.goodName }}</p>
                     <p class="p2">￥{{selfGood.goodSalePrice}}</p>
