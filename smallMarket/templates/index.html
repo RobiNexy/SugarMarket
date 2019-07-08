@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/picture.css' %}">
+    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/picture.js' %}"></script>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#water').click(function () {
+                $("html,body").animate({ scrollTop: $("#1").offset().top - 100 }, 500);
+            });
+            $('#milk').click(function () {
+                $("html,body").animate({ scrollTop: $("#2").offset().top - 100 }, 500);
+            });
+            $('#wine').click(function () {
+                $("html,body").animate({ scrollTop: $("#3").offset().top - 100 }, 500);
+            });
+            $('#snack').click(function () {
+                $("html,body").animate({ scrollTop: $("#4").offset().top - 100 }, 500);
+            });
+            $('#cake').click(function () {
+                $("html,body").animate({ scrollTop: $("#5").offset().top - 100 }, 500);
+            });
+            $('#food').click(function () {
+                $("html,body").animate({ scrollTop: $("#6").offset().top - 100 }, 500);
+            });
+            $('#hard').click(function () {
+                $("html,body").animate({ scrollTop: $("#7").offset().top - 100 }, 500);
+            });
+            $('#self').click(function () {
+                $("html,body").animate({ scrollTop: $("#8").offset().top - 100 }, 500);
+            });
+        });
+    </script>
+    <style>
+        .ul1 {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #f1f1f1;
+        }
+
+        .ul1 li a {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .ul1 li a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .ul1 li a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header -->
+    <div class="header">
+        <!--logo-->
+        <div class="content1">
+            <img src="{% static 'image/thelogo.png' %}" alt="">
+        </div>
+        <!--search-->
+        <div class="content2">
+            <form action="/app/index/">
+                <input class="in1" type="text" name="search" id="search" placeholder="请输入商品">
+                <input class="in2" type="submit" value="搜索">
+            </form>
+        </div>
+        <!--shopping-->
+        <div class="content3">
+            <a href=""><img src="{% static 'image/shopping.png' %}" alt="">
+        </div>
+        <!--login & register-->
+        <div class="content4">
+            <a href=""><img src="{% static 'image/user.png' %}" alt=""></a>
+        </div>
+    </div>
+    <!--header-->
+
+     <!--picture-->
+     <div class="warp">
+        <!--图片-->
+        <ul class="box" id="box" style="height:600px">
+            <li><a href="#"><img src="{% static 'image/1.jpg' %}" , alt="" /></a></li>
+            <li><a href="#"><img src="{% static 'image/2.jpg' %}" , alt="" /></a></li>
+            <li><a href="#"><img src="{% static 'image/3.jpg' %}" , alt="" /></a></li>
+            <li><a href="#"><img src="{% static 'image/4.png' %}" , alt="" /></a></li>
+            <li><a href="#"><img src="{% static 'image/5.jpg' %}" , alt="" /></a></li>
+            <li><a href="#"><img src="{% static 'image/6.jpg' %}" , alt="" /></a></li>
+        </ul>
+        <!--按钮-->
+        <div class="buts">
+            <span class="butL" id="butL"><img src="{% static 'image/zuo.png' %}" , alt="" /></span>
+            <span class="butR" id="butR"><img src="{% static 'image/you.png' %}" , alt="" /></span>
+        </div>
+        <!--圆点-->
+        <div class="dotBox">
+            <ul class="dot" id="dot">
+                <li id="dotIs"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <!--picture-->
+
+    <!--productFunction-->
+    <a class="thea"></a>
+    <div class="prod-list">
+        <!--list-->
+        <div class='list' id="thelist">
+            <ul class="ul1">
+                <li><a id="water">水饮</a></li>
+                <li><a id="milk">奶品</a></li>
+                <li><a id="wine">酒</a></li>
+                <li><a id="snack">方便速食</a></li>
+                <li><a id="cake">饼干/蛋糕</a></li>
+                <li><a id="food">膨化食品</a></li>
+                <li><a id="hard">坚果</a></li>
+                <li><a id="self">个人日用</a></li>
+            </ul>
+        </div>
+
+
+        <!--product-->
+        <!--水饮-->
+        <div class='product' id="theproduct">
+            <div class="theblock" id='1'>
+                <div style="padding-left:40px;">
+                    <h1>水饮</h1>
+                </div>
+                {% for waterGood in waterList %}
+                <a href="/smallMarket/detail/"+{{waterGood.name}}><div class='theprod'>
+                    <img src="/static/good_images/{{ waterGood.goodPicPath }}" alt="">
+                    <p class="p1">{{ waterGood.goodName }}</p>
+                    <p class="p2">￥{{waterGood.goodSalePrice}}</p>
+                    <p class="p3">...</p>
+                </div></a>
+                {% endfor %}
+            </div>
+            <!--奶品-->
+            <div class="theblock" id="2">
+                <div style="padding-left: 40px">
+                    <h1>奶品</h1>
+                </div>
+                {% for milkGood in milkList %}
+                <a href="/smallMarket//detail/"+{{milkGood.name}}><div class='theprod'>
+                    <img src="/static/good_images/{{ milkGood.goodPicPath }}" alt="">
+                    <p class="p1">{{ milkGood.goodName }}</p>
+                    <p class="p2">￥{{milkGood.goodSalePrice}}</p>
+                    <p class="p3">...</p>
+                </div></a>
+                {% endfor %}
+            </div>
+            <!--酒-->
+            <div class="theblock" id="3">
+                <div style="padding-left: 40px">
+                    <h1>酒</h1>
+                </div>
+                {% for wineGood in wineList %}
+                <a href="/smallMarket//detail/"+{{wineGood.name}}><div class='theprod'>
+                    <img src="/static/good_images/{{ wineGood.goodPicPath }}" alt="">
+                    <p class="p1">{{ wineGood.goodName }}</p>
+                    <p class="p2">￥{{wineGood.goodSalePrice}}</p>
+                    <p class="p3">...</p>
+                </div></a>
+                {% endfor %}
+            </div>
+            <!--方便速食-->
+            <div class="theblock" id="4">
+                <div style="padding-left:40px;">
+                    <h1>方便速食</h1>
+                </div>
+                {% for snackGood in snackList %}
+                <a href="/smallMarket/detail/"+{{snackGood.name}}><div class='theprod'>
+                    <img src="/static/good_images/{{ snackGood.goodPicPath }}" alt="">
+                    <p class="p1">{{ snackGood.goodName }}</p>
+                    <p class="p2">￥{{snackGood.goodSalePrice}}</p>
+                    <p class="p3">...</p>
+                </div></a>
+                {% endfor %}
+            </div>
+            <!--饼干/蛋糕-->
+            <div class="theblock" id="5">
+                <div style="padding-left:40px;">
+                    <h1>饼干/蛋糕</h1>
+                </div>
+                {% for cakeGood in cakeList %}
+                <a href="/smallMarket/detail/"+{{cakeGood.name}}><div class='theprod'>
+                    <img src="/static/good_images/{{ cakeGood.goodPicPath }}" alt="">
+                    <p class="p1">{{ cakeGood.goodName }}</p>
+                    <p class="p2">￥{{cakeGood.goodSalePrice}}</p>
+                    <p class="p3">...</p>
+                </div></a>
+                {% endfor %}
+            </div>
+            <!--膨化食品-->
+            <div class="theblock" id="6">
+                <div style="padding-left:40px;">
+                    <h1>膨化食品</h1>
+                </div>
+                {% for foodGood in foodList %}
+                <a href="/smallMarket/detail/"+{{foodGood.name}}><div class='theprod'>
+                    <img src="/static/good_images/{{ foodGood.goodPicPath }}" alt="">
+                    <p class="p1">{{ foodGood.goodName }}</p>
+                    <p class="p2">￥{{foodGood.goodSalePrice}}</p>
+                    <p class="p3">...</p>
+                </div></a>
+                {% endfor %}
+            </div>
+            <!--坚果-->
+            <div class="theblock" id="7">
+                <div style="padding-left:40px;">
+                    <h1>坚果</h1>
+                </div>
+                {% for hardGood in hardList %}
+                <a href="/smallMarket/detail/"+{{hardGood.name}}><div class='theprod'>
+                    <img src="/static/good_images/{{ hardGood.goodPicPath }}" alt="">
+                    <p class="p1">{{ hardGood.goodName }}</p>
+                    <p class="p2">￥{{hardGood.goodSalePrice}}</p>
+                    <p class="p3">...</p>
+                </div></a>
+                {% endfor %}
+            </div>
+            <!--个人日用-->
+            <div class="theblock" id="8">
+                <div style="padding-left:40px;">
+                    <h1>个人日用</h1>
+                </div>
+                {% for selfGood in selfList %}
+                <a href="/smallMarket/detail/"+{{selfGood.name}}><div class='theprod'>
+                    <img src="/static/good_images/{{ selfGood.goodPicPath }}" alt="">
+                    <p class="p1">{{ selfGood.goodName }}</p>
+                    <p class="p2">￥{{selfGood.goodSalePrice}}</p>
+                    <p class="p3">...</p>
+                </div></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!--productFunction-->
+
+    <!--footer-->
+    <div class="foot">
+        <pre style="text-align:center">联系方式：1234567  电子邮箱：123456789@qq.com  制作团队：三无团队出品  公司地址:重庆市</pre>
+        <!--<div class="down1">
+            <div class="down2">
+                <div class="downzi1">多 </div>
+                <div class="downzi2">品类繁多，轻松购物</div>
+            </div>
+            <div class="down2">
+                <div class="downzi1">快 </div>
+                <div class="downzi2">同城仓库，急速购物</div>
+            </div>
+            <div class="down2">
+                <div class="downzi1">优 </div>
+                <div class="downzi2">正品行货，优质购物</div>
+            </div>
+            <div class="down2">
+                <div class="downzi1">省</div> 
+                <div class="downzi2">天天低价，畅选购物</div>
+            </div>
+        </div>-->
+    </div>
+    <!--footer-->
+
+</body>
+
+</html>

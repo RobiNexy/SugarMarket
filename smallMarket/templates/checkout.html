@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单确认</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/checkout.css' %}">
+</head>
+
+<body>
+    <div class="checkout_top innerpage">
+        <div class="logo inner_page_log">
+            <h1><a class="navbar-brand" href="index.html"><span>舒格</span> <i>7号</i></a></h1>
+        </div>
+    </div>
+    <div class="inner_breadcrumb_agileits_w3">
+
+            <ul class="short">
+                <li><a href="index.html">返回主页</a><i>|</i></li>
+                <li>订单确认</li>
+            </ul>
+        </div>
+    <div class="checkout-right">
+        <h1>订单确认</h1>
+        <h4>详情<span></span></h4>
+        <table class="timetable_sub">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>商品</th>
+                    <th>数量</th>
+                    <th>名称</th>
+                    <th>价格</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>内容</td>
+                <td>内容</td>
+                <td>内容</td>
+                <td>内容</td>
+                <td>内容</td>
+            </tr>
+        </table>
+
+        <div class="checkout-left">
+            <div class="col-md checkout-left-basket">
+                <ul>
+                    <li>Product1 <i>-</i> <span>$675.00 </span></li>
+                    <li>Product2 <i>-</i> <span>$325.00 </span></li>
+                    <li>Product3 <i>-</i> <span>$405.00 </span></li> <!-- 根据用户获取的商品获得价格 -->
+                    <li>总计 <i>-</i> <span>计算的商品总价</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <form action="/smallMarket/success/" class="customer_form" method="POST">
+                {% csrf_token %}
+                <p>收货人：</p>
+                <input type="text" class="form-control" name="customerName" placeholder="请输入收货人姓名" required>
+                <p>手机号：</p>
+                <input type="text" class="form-control" name="customerPhoneNumber" placeholder="请输入手机号码" required>
+                <p>房间号：</p>
+                <input type="text" class="form-control" name="customerRoomNumber" placeholder="请输入房间号码" required>
+                <br><br>
+                <button class="submit check_out">确认信息</button>
+            </form>
+        </div>
+    </div>
+    <a href="/smallMarket/2/12">addCookies</a>
+    {{ msg }}
+</body>
+
+</html>

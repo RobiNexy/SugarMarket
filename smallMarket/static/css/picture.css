@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+img{
+    vertical-align: middle;
+}
+.warp{
+    width: 100%;
+    height: 700px;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+.box{
+    height: 600px;
+    position: absolute;
+    left: 0px;
+    /*平移过渡动画，时间为半秒钟*/
+    transition: all 0.5s;
+}
+.box li{
+    width: 1920px;
+    height: 600px;
+    float: left;
+}
+.box li a{
+    width: 100%;
+    height: 600px;
+}
+.box li a img{
+    width: 100%;
+    height: 600px;
+   /* cursor: pointer; */
+}
+.buts span{
+    color: #FFFFFF;
+    display: none;
+   width: 8px;
+    height: 14px;
+    line-height: 18px;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+    margin: 0 auto;
+    cursor: pointer;
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+   user-select: none;
+    
+}.buts span:hover{
+   background-color: rgba(0,0,0,0.8);
+}
+.buts span img{
+    display: block;
+   width: 8px;
+    height: 14px;
+}
+.butL{
+    position: absolute;
+    z-index: 100;
+    top: 264px;
+    padding: 10px 10px 10px 5px;
+    border-top-right-radius: 17px;
+    border-bottom-right-radius: 17px;
+}
+.butR{
+    position: absolute;
+    z-index: 100;
+    top: 264px;
+    right: 0;
+    padding: 10px 5px 10px 10px;
+   border-top-left-radius: 17px;
+    border-bottom-left-radius: 17px;
+}
+.dotBox{
+    position: absolute;
+    z-index: 999;
+    bottom: 10px;
+   width: 100%;
+    height: 18px;
+    text-align: center;
+}
+.dot{
+    display: inline-block;
+    margin: 0 auto;
+    height: 8px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: rgba(255,255,255,0.3);
+}
+.dot li{
+    float: left;
+    width: 8px;
+    height: 8px;
+    line-height: 8px;
+    border-radius: 4px;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0 4px;
+   background-color: #FFFFFF;
+   cursor: pointer;
+   user-select:none;
+    -moz-user-focus: none;
+    -webkit-user-select: none;
+    -lhtml-user-select:none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    font-size: 10px;
+}
+.dot li:hover{
+    background-color: #FF0000;
+}
+#dotIs{
+    background-color: #FF0000;
+}

@@ -1,0 +1,209 @@
+/* /表格约束 */
+table.timetable_sub {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.timetable_sub thead {
+	background: #004284;
+}
+
+.timetable_sub th {
+	background: #212121;
+	color: #fff !important;
+	text-transform: capitalize;
+	font-size: 13px;
+	border-right: 1px solid #ded2d2;
+}
+
+.timetable_sub th,
+.timetable_sub td {
+	text-align: center;
+	padding: 7px;
+	font-size: 14px;
+	color: #212121;
+}
+
+.timetable_sub td {
+	border: 1px solid #CDCDCD;
+}
+/* //表格约束 */
+
+/* /div约束 */
+.checkout-left-basket h4 {
+	padding: 1em;
+	background: #fb383b;
+	font-size: 1em;
+	color: #fff;
+	text-transform: uppercase;
+	text-align: center;
+	margin: 0 0 2em;
+}
+
+.checkout-left {
+	margin: 2em 0 0;
+}
+
+.checkout-left-basket ul li {
+	list-style-type: none;
+	margin-bottom: 1em;
+	font-size: 14px;
+	color: #999;
+}
+
+.checkout-left-basket {
+	float: left;
+}
+
+.checkout-right-basket {
+	float: right;
+	margin: 3em 0em;
+}
+
+.checkout-left-basket ul li span {
+	float: right;
+}
+
+.checkout-left-basket ul li:nth-child(5) {
+	font-size: 1em;
+	color: #212121;
+	font-weight: 600;
+	padding: 1em 0;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
+	margin: 2em 0 0;
+}
+
+.checkout-right-basket a {
+	padding: 10px 20px;
+	color: #fff;
+	font-size: 1em;
+	background: #212121;
+	text-decoration: none;
+}
+
+.checkout-right-basket a:hover {
+	background: #fb383b;
+}
+
+.checkout-right-basket a span {
+	left: -.5em;
+	top: 0.1em;
+}
+
+.checkout-right {
+	width: 90%;
+	margin:0 auto;
+}
+/* //div约束 */
+
+/* /输入框约束 */
+.form-control {
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+			box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+		 -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+			transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form-control:focus {
+border-color: #66afe9;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+			box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.form-control::-moz-placeholder {
+	color: #999;
+	opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+	color: #999;
+}
+.form-control::-webkit-input-placeholder {
+	color: #999;
+}
+/* //输入框约束 */
+
+/* /订单价格详情约束 */
+.col-md{
+	float: left;
+	width: 33.333333333%;
+}
+/* //订单价格详情约束 */
+
+/* /表单提交按钮约束 */
+button.submit.check_out {
+	display: block;
+	position: relative;
+	padding: 11px 30px;
+	letter-spacing: 1px;
+	background: #212121;
+	font-size: 1em;
+	color: #fff;
+	font-weight: 600;
+	border: none;
+	outline: none;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+	text-transform: uppercase;
+	cursor: pointer; 
+}
+/* //表单提交按钮约束 */
+
+.customer_form {
+	float: right;
+	margin-right: 1.8%;
+    width: 56.66666666%;
+}
+
+.checkout_top.innerpage {
+    background: url(../image/test.jpg) no-repeat 0px -221px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+	min-height: 225px;
+}
+.logo.inner_page_log {
+    position: absolute;
+    z-index: 99;
+    left: 7%;
+    margin-top: 47px;
+}
+.navbar-brand {
+    font-size: 0.7em;
+    color: #fff;
+    text-decoration: none;
+    border:1px solid #fff;
+    text-transform: uppercase;
+    font-weight: 300;
+    display: block;
+    padding: 0;
+    height: 46px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.31);
+}
+.navbar-brand span {
+    padding: 0.496em .6em;
+    display: inline-block;
+    background: #fff;
+    color: #2e2f2f;
+}
+.navbar-brand i {
+    padding: 0.5em 0.5em 0.5em 0em;
+    font-style: normal;
+    display: inline-block;
+}
