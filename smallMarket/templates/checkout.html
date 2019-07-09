@@ -18,19 +18,17 @@
     </div>
     <div class="inner_breadcrumb_agileits_w3">
 
-            <ul class="short">
-                <li><a href="index.html">返回主页</a><i>|</i></li>
-                <li>订单确认</li>
-            </ul>
-        </div>
+        <ul class="short">
+            <li><a href="/sugarMarket/">返回主页</a><i>|</i></li>
+            <li>订单确认</li>
+        </ul>
+    </div>
     <div class="checkout-right">
         <h1>订单确认</h1>
         <h4>详情<span></span></h4>
         <table class="timetable_sub">
             <thead>
                 <tr>
-                    <th>编号</th>
-                    <th>商品</th>
                     <th>名称</th>
                     <th>数量</th>
                     <th>单价</th>
@@ -38,13 +36,42 @@
                 </tr>
             </thead>
             <tr>
-                <td> 1 </td>
-                <td> 1 </td>
-                <td> 1 </td>
-                <td> 1 </td>
-                <td> 1 </td>
-                <td> 1 </td>
                 
+                <!-- <td>
+                        {% for goodname in goodNameList %}
+                    <img src="{% static 'good_images/Good.objects.get(goodName=goodname).goodPicPath' %}" alt="">
+                    <br>{% endfor %} 
+                </td> -->
+               
+               
+                <td>
+                        {% for goodname in goodNameList %}
+                    {{ goodname }}
+                    <br>{% endfor %}
+                </td>
+                
+               
+                <td>
+                    {% for goodno in goodNumberList %}
+                    {{ goodno }}
+                    <br>{% endfor %}
+                </td>
+                
+               
+                <td>
+                        {% for goodprice in goodPriceList %}
+                    {{ goodprice }}
+                    <br>{% endfor %}
+                </td>
+                
+                
+                <td>
+                        {% for price in orderItemTotalPriceList %}
+                    {{ price }}
+                    <br>{% endfor %}
+
+                </td>
+               
             </tr>
         </table>
 
@@ -55,12 +82,13 @@
                     <li>Product2 <i>-</i> <span>$325.00 </span></li>
                     <li>Product3 <i>-</i> <span>$405.00 </span></li> <!-- 根据用户获取的商品获得价格 -->
                     <li>总计 <i>-</i> <span>计算的商品总价</span></li>
+                    
                 </ul>
             </div>
         </div>
 
         <div>
-            <form action="/smallMarket/success/" class="customer_form" method="POST">
+            <form action="/sugarMarket/shopcart/checkOut/" class="customer_form" method="POST">
                 {% csrf_token %}
                 <p>收货人：</p>
                 <input type="text" class="form-control" name="customerName" placeholder="请输入收货人姓名" required>
@@ -73,8 +101,6 @@
             </form>
         </div>
     </div>
-    <a href="/smallMarket/2/12">addCookies</a>
-    <script>alert('{{ msg }}')</script>
 </body>
 
 </html>

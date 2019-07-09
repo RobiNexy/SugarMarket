@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>修改商品</h1>
+    <form action="/smallMarket/good/update/" method="POST">
+        {% csrf_token %}
+        商品编号：{{ good.id}} <br>
+        <input type="hidden" name="id" value="{{ good.id }}">
+
+        商品名称：
+        <input type="text" name="goodName" value="{{ good.goodName }}"><br>
+        商品种类：
+        <input type="text" name="goodKind" value="{{ good.goodKind }}"><br>
+        商品库存：
+        <input type="text" name="goodNumberRemain" value="{{ good.goodNumberRemain }}"><br>
+        商品进价：
+        <input type="text" name="goodInPrice" value="{{ good.goodInPrice }}"><br>
+        商品售价：
+        <input type="text" name="goodSalePrice" value="{{ good.goodSalePrice }}"><br>
+        图片地址：
+        <input type="text" name="goodPicPath" value="{{ good.goodPicPath }}"><br>
+
+        <!-- 销售数额：
+        <input type="text" name="goodTotalSale" value="{{ good.goodTotalSale }}"><br> -->
+
+        <button type="submit">修改</button>
+    </form>
+    {{ msg }}
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Single</title>
+	<title>商品详情</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
@@ -17,177 +17,79 @@
 	</script>
 
 	<script language=javascript>
-		function a() {
-			alert("加入购物车成功");
-			return true;
-		}
-
+            function a()
+            {
+                alert("加入购物车成功");
+                return true;
+            }
+            
 	</script>
-
-	<link rel="stylesheet" href="/static/css/backgroud.css">
-
 	<!-- //custom-theme -->
+	<link rel="stylesheet" href="/static/css/backgroud.css">
 	<link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<link rel="stylesheet" href="/static/css/shop.css" type="text/css" media="screen" property="" />
-	<link href="/static/css/style7.css" rel="stylesheet" type="text/css" media="all" />
-	<link rel="stylesheet" href="/static/css/flexslider.css" type="text/css" media="screen" />
-	<link href="/static/css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
-	<!-- Owl-carousel-CSS -->
-	<link rel="stylesheet" type="text/css" href="/static/css/jquery-ui1.css">
 	<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- font-awesome-icons -->
-	<link href="/static/css/font-awesome.css" rel="stylesheet">
-	<!-- //font-awesome-icons -->
-	<link
-		href="http://fonts.googleapis.com/css?family=Montserrat:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
-		rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800"
-		rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Montserrat:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 
 </head>
 
 <body>
 	<!-- banner -->
 	{% csrf_token %}
-
-	<div class="top innerpage" id="home">
+	<div class="top innerpage" id="banner-top">
 		<div class="wrapper_top_w3layouts">
 			<div class="header_agileits">
 				<div class="logo inner_page_log">
-					<h1><a class="navbar-brand" href="/sugarMarket/index/"><span>舒格</span> <i>七号</i></a></h1>
-				</div>
-				<div class="services-breadcrumb_w3ls_agileinfo">
-					<div class="inner_breadcrumb_agileits_w3">
-
-						<ul class="short">
-							<li><a href="/sugarMarket/">回到首页</a><i>|</i></li>
-							<li>商品详情</li>
-						</ul>
-					</div>
-				</div>
-				<!-- //banner_inner -->
+					<h1><a class="navbar-brand" href="/sugarMarket/"><span>舒格</span> <i>七号</i></a></h1>
+				</div>				
 			</div>
-			<div class="ads-grid_shop">
-				<div class="shop_inner_inf">
-					<div class="col-md-4 single-right-left ">
-						<div class="grid images_3_of_2">
-							<div class="flexslider">
-
-								<ul class="slides">
-									<img src="/static/good_images/{{ picPath }}" alt="">
-								</ul>
-								<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+		<!-- /banner_inner -->
+		<div class="services-breadcrumb_w3ls_agileinfo">
+			<div class="inner_breadcrumb_agileits_w3">
+				<ul class="short">
+					<li><a href="/sugarMarket/">回到首页</a><i>|</i></li>
+					<li>商品详情</li>
+				</ul>
+			</div>
+		</div>
+		<!-- //banner_inner -->
+	</div>
+	<div class="ads-grid_shop">
+		<div class="shop_inner_inf">
+			<div class="col-md-4 single-right-left ">
+				<div class="grid images_3_of_2">
+					<div class="flexslider">
+						<ul class="slides">
+							<div style="width: 400px ; height: 400px ; margin-left: 50px">
+								<img src="/static/good_images/{{ picPath }}" style="width: 100% ; height:100% " alt="">  
 							</div>
-						</div>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 single-right-left simpleCart_shelfItem" >
+				<h3 style="font-size: 50px;">{{ good.goodName }} </h3> <br> <br>
+				<p><span class="item_price">价格：{{ good.goodSalePrice }} 元</span></p> <br>
+				<p><span class="item_price">类型：{{ good.goodKind }}</span></p> <br>
+				<p><span class="item_price">销量：{{ good.goodTotalSale }}</span></p> <br>
+				<p><span class="item_price">推荐指数：根据同类产品最近的销量给产品打分 </span></p><br>
+				<div class="occasion-cart">
+					<div class="shoe single-item single_page_b">
+						<form action="/sugarMarket/addToCart/{{ good.id }}" method="GET">
+							<input type="submit" name="submit" value="加入购物车" class="button add" onclick="return a();" style="margin-right:40px; float:left;">		
+						</form>
+						<form action="/sugarMarket/shopcart/" method="GET">
+							<input type="submit" name="submit" value="我的购物车" class="button add" style="float:left;">
+						</form>
 					</div>
 
-					<div class="col-md-8 single-right-left simpleCart_shelfItem">
-
-						<h3 style="font-size: 55px">{{ good.goodName }} </h3> <br> <br> <br>
-						<p><span class="item_price">价格：{{ good.goodSalePrice }} 元</span></p> <br>
-						<p><span class="item_price">销量：{{ good.goodTotalSale }}</span></p> <br>
-						<p><span class="item_price">推荐指数： </span></p><br> <br> <br> <br>
-						<div class="occasion-cart">
-							<div class="shoe single-item single_page_b">
-								<form action="/sugarMarket/addToCart/{{ good.id }}" method="GET">
-									<input type="submit" name="submit" value="加入购物车" class="button add"
-										onclick="return a();" style="margin-right:40px; float:left;">
-								</form>
-								<form action="/sugarMarket/shopcart/" method="GET">
-									<input type="submit" name="submit" value="我的购物车" class="button add"
-										style="float:left;">
-								</form>
-							</div>
-
-						</div>
-					</div>
-					<div class="clearfix"> </div>
-					<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover"
-							style="opacity: 1;"> </span></a>
-					<!-- js -->
-					<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-					<!-- //js -->
-					<!-- cart-js -->
-					<script src="js/minicart.js"></script>
-					<script>
-						shoe.render();
-
-						shoe.cart.on('shoe_checkout', function (evt) {
-							var items, len, i;
-
-							if (this.subtotal() > 0) {
-								items = this.items();
-
-								for (i = 0, len = items.length; i < len; i++) { }
-							}
-						});
-					</script>
-					<!-- //cart-js -->
-					<!-- /nav -->
-					<script src="js/modernizr-2.6.2.min.js"></script>
-					<script src="js/classie.js"></script>
-					<script src="js/demo1.js"></script>
-					<!-- //nav -->
-					<!-- single -->
-					<script src="js/imagezoom.js"></script>
-					<!-- single -->
-					<!-- script for responsive tabs -->
-					<script src="js/easy-responsive-tabs.js"></script>
-					<script>
-						$(document).ready(function () {
-							$('#horizontalTab').easyResponsiveTabs({
-								type: 'default', //Types: default, vertical, accordion           
-								width: 'auto', //auto or any width like 600px
-								fit: true, // 100% fit in a container
-								closed: 'accordion', // Start closed if in accordion view
-								activate: function (event) { // Callback function if tab is switched
-									var $tab = $(this);
-									var $info = $('#tabInfo');
-									var $name = $('span', $info);
-									$name.text($tab.text());
-									$info.show();
-								}
-							});
-							$('#verticalTab').easyResponsiveTabs({
-								type: 'vertical',
-								width: 'auto',
-								fit: true
-							});
-						});
-					</script>
-					<!-- FlexSlider -->
-					<script src="js/jquery.flexslider.js"></script>
-					<script>
-						// Can also be used with $(document).ready()
-						$(window).load(function () {
-							$('.flexslider').flexslider({
-								animation: "slide",
-								controlNav: "thumbnails"
-							});
-						});
-					</script>
-					<!-- //FlexSlider-->
-
-					<!--search-bar-->
-					<script src="js/search.js"></script>
-					<!--//search-bar-->
-					<!-- start-smoth-scrolling -->
-					<script type="text/javascript" src="js/move-top.js"></script>
-					<script type="text/javascript" src="js/easing.js"></script>
-					<script type="text/javascript">
-						jQuery(document).ready(function ($) {
-							$(".scroll").click(function (event) {
-								event.preventDefault();
-								$('html,body').animate({
-									scrollTop: $(this.hash).offset().top
-								}, 1000);
-							});
-						});
-					</script>
-					<!-- //end-smoth-scrolling -->
-					<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
-
-
+				</div>	
+			</div>
+	<div class="clearfix"> </div>
 </body>
 
 </html>

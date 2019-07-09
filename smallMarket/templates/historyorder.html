@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{
+            width: 1000px;
+            border: none;
+        }
+        th{
+            background-color: salmon;
+            color: white;
+        }
+        td{
+            background-color: blanchedalmond;
+        }
+        .detailpointer{
+            border: none;
+            background-color: yellowgreen;
+            color: white;
+            width: 100px;
+            outline: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+     
+    </style>
+    <script>
+        function updateOne(id){
+            window.location.href = '/sugarMarket/historyorder/orderlist/'+ id
+        }
+    </script>
+</head>
+<body>
+    <h1>订单详情</h1>
+    <table id="tab">
+        <tr>
+            <th>订单号</th>
+            <th>收货人id</th>
+            <th>订单总额</th>
+            <th>完成情况</th>
+            <th>生成时间</th>
+            <th>详情</th>
+        </tr>
+        {% for order in orderlist %}
+        <tr>
+            <td>{{ order.orderNumber }}</td>
+            <td>{{ order.customer }}</td>
+            <td>{{ order.orderTotalPrice }}</td>
+            <td>{{ order.orderCompleted }}</td>
+            <td>{{ order.orderTime }}</td>
+            <td style="text-align:center;">
+                <button class=".detailpointer" onclick="updateOne('{{ order.id }}');">详情</button>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" style="text-align:center;">暂无数据</td>
+        </tr>
+        {% endfor %}
+    </table>
+  
+    <!-- 分页导航 -->
+    <p>
+        {% if orderlist.has_previous %}
+        <a href="?page={{ orderlist.previous_page_number }}">上一页</a>
+        {% endif %}
+        当前：{{ orderlist.number }} / {{ orderlist.paginator.num_pages }}
+        {% if orderlist.has_next %}
+        <a href="?page={{ orderlist.next_page_number }}">下一页</a>
+        {% endif %}
+    </p>
+    <a href="/sugarMarket/admin/">返回至管理员页面</a>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{
+            width: 1000px;
+            border: none;
+        }
+        th{
+            background-color: salmon;
+            color: white;
+        }
+        td{
+            background-color: blanchedalmond;
+        }
+        .upbut{
+            border: none;
+            background-color: yellowgreen;
+            color: white;
+            width: 50px;
+            outline: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .delbut{
+            border: none;
+            background-color:tomato;
+            color: white;
+            width: 50px;
+            outline: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        function delone(id){
+            if(window.confirm('是否确认删除？')){
+                window.location.href = '/sugarMarket/goodlist/delbyid/' + id;
+            }
+        }
+        function updateOne(id){
+            window.location.href = '/sugarMarket/goodlist/preupdate/'+ id
+        }
+    </script>
+</head>
+<body>
+    <h1>商品列表</h1>
+    <table id="tab">
+        <tr>
+            <th>商品名称</th>
+            <th>商品种类</th>
+            <th>商品库存</th>
+            <th>商品进价</th>
+            <th>商品售价</th>
+            <th>图片地址</th>
+            <th>销售数量</th>
+            <th>操作</th>
+        </tr>
+        {% for good in dlist %}
+        <tr>
+            <td>{{ good.goodName }}</td>
+            <td>{{ good.goodKind }}</td>
+            <td>{{ good.goodNumberRemain }}</td>
+            <td>{{ good.goodInPrice }}</td>
+            <td>{{ good.goodSalePrice }}</td>
+            <td>{{ good.goodPicPath }}</td>
+            <td>{{ good.goodTotalSale }}</td>
+            <td style="text-align:center;">
+                <button class="upbut" onclick="updateOne('{{ good.id }}');">修改</button>
+                <button class="delbut" onclick="delone('{{ good.id }}');">移除</button>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="8" style="text-align:center;">暂无数据</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {{ msg }}
+
+    <!-- 分页导航 -->
+    <p>
+        {% if dlist.has_previous %}
+        <a href="?page={{ dlist.previous_page_number }}">上一页</a>
+        {% endif %}
+        当前：{{ dlist.number }} / {{ dlist.paginator.num_pages }}
+        {% if dlist.has_next %}
+        <a href="?page={{ dlist.next_page_number }}">下一页</a>
+        {% endif %}
+    </p>
+
+    <a href="/sugarMarket/goodadd/">添加商品</a>
+    <a href="/sugarMarket/admin/">返回至管理员页面</a>
+</body>
+</html>

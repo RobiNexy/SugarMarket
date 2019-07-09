@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        添加商品
+    </h1>
+    <form action="/sugarMarket/goodadd/" method="POST">
+        {% csrf_token %}
+        商品名称：
+        <input type="text" name="goodName" ><br>
+        商品种类：
+        <input type="text" name="goodKind" ><br>
+        商品库存：
+        <input type="text" name="goodNumberRemain" ><br>
+        商品进价：
+        <input type="text" name="goodInPrice" ><br>
+        商品售价：
+        <input type="text" name="goodSalePrice" ><br>
+        图片地址：
+        <input type="text" name="goodPicPath" ><br>
+
+        <button type="submit">添加</button>
+    </form>
+    {{ msg }}
+    <br>
+    <a href="/sugarMarket/goodlist/?page=end/">返回至商品信息尾页</a>
+</body>
+</html>
