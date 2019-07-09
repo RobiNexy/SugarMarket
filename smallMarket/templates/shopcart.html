@@ -29,14 +29,14 @@
         {% for pro in good %}
         <tr class="trclass">
             <td class="tdtwo">{{ pro.goodName }}</td>
-            <td class="tdthree"><span class="jiajie"><input type="button" value="-"><span class="num">0</span><input type="button" value="+"></span></td>
+            <td class="tdthree"><span class="jiajie"><input type="button" value="-"><span class="num">1</span><input type="button" value="+"></span></td>
             <td class="tdfour"><span></span>单价：<span class="unit">{{ pro.goodSalePrice }}</span></td>
             <td class="tdfive"><span>小计：</span><span class="subtal">0</span></td>
             <td class="tdsix"><button class="del">×</button></td>
         </tr>
         {% endfor %}
         
-        <tr class="fixedHead"><td colspan="6"; class="talast"><span>商品数为<span class="goods_num">0</span>;共计花费 <span class="pricetal">0</span> 元;</td><td class="fixedHead"><a href="/app/paypage">去支付</a></td></tr>
+        <tr class="fixedHead"><td colspan="6"; class="talast"><span>商品数为<span class="goods_num">0</span>;共计花费 <span class="pricetal">0</span> 元;</td><td class="fixedHead"><a href="gotoCheckOut/">确认下单</a></td></tr>
         
     </table>
     <!-- {% for pro in content %}

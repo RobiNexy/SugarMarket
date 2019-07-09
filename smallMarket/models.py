@@ -37,7 +37,9 @@ class OrderItem(models.Model):
     order=models.ForeignKey(Order,on_delete=models.CASCADE,null=True,blank=True)# 订单ID
     customer=models.ForeignKey(Customer,on_delete=models.CASCADE,null=True,blank=True)# 收货人ID
     good=models.ForeignKey(Good,on_delete=models.CASCADE,null=True,blank=True)# 商品ID
-    goodNumber=models.IntegerField(default=0)# 单项商品数量
+    goodNumber=models.IntegerField(default=1)# 单项商品数量
     goodTotalPrice=models.FloatField(default=0)# 单项总价   并不必要
+    isInCart=models.BooleanField(default=True)
+
 
 
