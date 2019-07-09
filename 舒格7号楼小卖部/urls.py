@@ -20,4 +20,5 @@ from . import urls
 
 urlpatterns = [
     path('',include('smallMarket.urls')),
+    path('admin/',admin.site.urls),
 ]

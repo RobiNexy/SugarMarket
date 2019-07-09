@@ -145,119 +145,123 @@ def orderUpdate(request, idnum):
         temp = val-vbl
         Good.objects.filter(id=order.good_id).update(goodNumberRemain=temp)
     # 返回未配送订单页
-    return redirect('/orders/')
+    return redirect('/sugarMarket/orders/')
 
 # 管理员页面
-def admin(request):
-    return render(request, 'admin.html')
+# def admin(request):
+#     return render(request, 'admin.html')
 
-def goodAdd(request):
-    if request.POST:
-        # 接收页面提交的数据
-         # goodnumber = request.POST.get('goodnumber',None)
-        goodName = request.POST.get('goodName', None)
-        goodKind = request.POST.get('goodKind', None)
-        goodNumberRemain = request.POST.get('goodNumberRemain', None)
-        goodInPrice = request.POST.get('goodInPrice', None)
-        goodSalePrice = request.POST.get('goodSalePrice', None)
-        goodPicPath = request.POST.get('goodPicPath', None)
-        # 创建模型对象
-        if((goodName == '') or (goodKind == '') or (goodNumberRemain == '') or (goodInPrice == '') or (goodSalePrice == '') or (goodPicPath == '')):
-            return render(request, 'goodadd.html', {'msg': '添加失败，请输入完整的信息'})
-        else:
-            Good.objects.create(goodName=goodName, goodKind=goodKind, goodNumberRemain=goodNumberRemain,
-                                    goodInPrice=goodInPrice,  goodSalePrice=goodSalePrice, goodPicPath=goodPicPath)
-            return render(request, 'goodadd.html', {'msg': '添加成功'})
-    else:
-        return render(request, 'goodadd.html')
-
-
-def goodlist(request):
-    # 查询全部商品信息
-    dlist = Good.objects.all()
-    # 创建分页器
-    paginator = Paginator(dlist, 20)  # 每页显示20条
-    # 接受客户端发送的页码
-    page = request.GET.get('page', 1)
-    # 首页尾页
-    try:
-        dlist = paginator.page(page)
-    except EmptyPage:
-        dlist = paginator.page(1)
-    except PageNotAnInteger:
-        dlist = paginator.page(paginator.num_pages)
-    # 将商品集合传递到页面上
-    return render(request, 'goodlist.html', {'dlist': dlist})
+# def goodAdd(request):
+#     if request.POST:
+#         # 接收页面提交的数据
+#          # goodnumber = request.POST.get('goodnumber',None)
+#         goodName = request.POST.get('goodName', None)
+#         goodKind = request.POST.get('goodKind', None)
+#         goodNumberRemain = request.POST.get('goodNumberRemain', None)
+#         goodInPrice = request.POST.get('goodInPrice', None)
+#         goodSalePrice = request.POST.get('goodSalePrice', None)
+#         goodPicPath = request.POST.get('goodPicPath', None)
+#         # 创建模型对象
+#         if((goodName == '') or (goodKind == '') or (goodNumberRemain == '') or (goodInPrice == '') or (goodSalePrice == '') or (goodPicPath == '')):
+#             return render(request, 'goodadd.html', {'msg': '添加失败，请输入完整的信息'})
+#         else:
+#             Good.objects.create(goodName=goodName, goodKind=goodKind, goodNumberRemain=goodNumberRemain,
+#                                     goodInPrice=goodInPrice,  goodSalePrice=goodSalePrice, goodPicPath=goodPicPath)
+#             return render(request, 'goodadd.html', {'msg': '添加成功'})
+#     else:
+#         return render(request, 'goodadd.html')
 
 
-def goodDelById(request, id):
-    Good.objects.filter(id=id).delete()
-    return redirect('/sugarMarket/goodlist/')
+# def goodlist(request):
+#     # 查询全部商品信息
+#     dlist = Good.objects.all()
+#     # 创建分页器
+#     paginator = Paginator(dlist, 20)  # 每页显示20条
+#     # 接受客户端发送的页码
+#     page = request.GET.get('page', 1)
+#     # 首页尾页
+#     try:
+#         dlist = paginator.page(page)
+#     except EmptyPage:
+#         dlist = paginator.page(1)
+#     except PageNotAnInteger:
+#         dlist = paginator.page(paginator.num_pages)
+#     # 将商品集合传递到页面上
+#     return render(request, 'goodlist.html', {'dlist': dlist})
 
 
-def preGoodUpdateById(request, id):
-    # 根据id查询数据
-    obj = Good.objects.filter(id=id)
-    return render(request, 'goodupdate.html', {'good': obj[0]})
+# def goodDelById(request, id):
+#     Good.objects.filter(id=id).delete()
+#     return redirect('/sugarMarket/goodlist/')
 
 
-def goodUpdateById(request):
-    # 获取页面传递的数据
-    id = request.POST.get('id')
-    goodName = request.POST.get('goodName', None)
-    goodKind = request.POST.get('goodKind', None)
-    goodNumberRemain = request.POST.get('goodNumberRemain', None)
-    goodInPrice = request.POST.get('goodInPrice', None)
-    goodSalePrice = request.POST.get('goodSalePrice', None)
-    goodPicPath = request.POST.get('goodPicPath', None)
-    goodTotalSale = request.POST.get('goodTotalSale', None)
-    # 修改数据
-    if((goodName == '') or (goodKind == '') or (goodNumberRemain == '') or (goodInPrice == '') or (goodSalePrice == '') or (goodPicPath == '')):
-        # if((goodName == '') or (goodKind == '') or (goodNumberRemain == '') or (goodInPrice == '') or (goodSalePrice == '') or (goodPicPath == '') or (goodTotalSale== '')):
-        # 查询全部商品信息
-        dlist = Good.objects.all()
-        # 创建分页器
-        paginator = Paginator(dlist, 20)  # 每页显示20条
-        # 接受客户端发送的页码
-        page = request.GET.get('page', 1)
-        # 首页尾页
-        try:
-            dlist = paginator.page(page)
-        except EmptyPage:
-            dlist = paginator.page(1)
-        except PageNotAnInteger:
-            dlist = paginator.page(paginator.num_pages)
-        # 将商品集合传递到页面上
-        return render(request, 'goodlist.html', {'dlist': dlist, 'msg': '修改失败'})
-    else:
-        Good.objects.filter(id=id).update(goodName=goodName, goodKind=goodKind, goodNumberRemain=goodNumberRemain,
-                                          goodInPrice=goodInPrice, goodSalePrice=goodSalePrice, goodPicPath=goodPicPath)
-        # Good.objects.filter(id = id).update(goodName=goodName, goodKind=goodKind, goodNumberRemain=goodNumberRemain, goodInPrice=goodInPrice, goodSalePrice=goodSalePrice, goodPicPath=goodPicPath, goodTotalSale=goodTotalSale)
-        return redirect('/sugarMarket/goodlist/')
+# def preGoodUpdateById(request, id):
+#     # 根据id查询数据
+#     obj = Good.objects.filter(id=id)
+#     return render(request, 'goodupdate.html', {'good': obj[0]})
 
 
-def historyOrder(request):
-    # 查询全部订单号
-    orderlist = Order.objects.all()
-    # 创建分页器
-    paginator = Paginator(orderlist, 20)  # 每页显示20条
-    # 接受客户端发送的页码
-    page = request.GET.get('page', 1)
-   # 首页尾页
-    try:
-        orderlist = paginator.page(page)
-    except EmptyPage:
-        orderlist = paginator.page(1)
-    except PageNotAnInteger:
-        orderlist = paginator.page(paginator.num_pages)
-    # 将商品集合传递到页面上
-    return render(request, 'historyorder.html', {'orderlist': orderlist})
+# def goodUpdateById(request):
+#     # 获取页面传递的数据
+#     id = request.POST.get('id')
+#     goodName = request.POST.get('goodName', None)
+#     goodKind = request.POST.get('goodKind', None)
+#     goodNumberRemain = request.POST.get('goodNumberRemain', None)
+#     goodInPrice = request.POST.get('goodInPrice', None)
+#     goodSalePrice = request.POST.get('goodSalePrice', None)
+#     goodPicPath = request.POST.get('goodPicPath', None)
+#     goodTotalSale = request.POST.get('goodTotalSale', None)
+#     # 修改数据
+#     if((goodName == '') or (goodKind == '') or (goodNumberRemain == '') or (goodInPrice == '') or (goodSalePrice == '') or (goodPicPath == '')):
+#         # if((goodName == '') or (goodKind == '') or (goodNumberRemain == '') or (goodInPrice == '') or (goodSalePrice == '') or (goodPicPath == '') or (goodTotalSale== '')):
+#         # 查询全部商品信息
+#         dlist = Good.objects.all()
+#         # 创建分页器
+#         paginator = Paginator(dlist, 20)  # 每页显示20条
+#         # 接受客户端发送的页码
+#         page = request.GET.get('page', 1)
+#         # 首页尾页
+#         try:
+#             dlist = paginator.page(page)
+#         except EmptyPage:
+#             dlist = paginator.page(1)
+#         except PageNotAnInteger:
+#             dlist = paginator.page(paginator.num_pages)
+#         # 将商品集合传递到页面上
+#         return render(request, 'goodlist.html', {'dlist': dlist, 'msg': '修改失败'})
+#     else:
+#         Good.objects.filter(id=id).update(goodName=goodName, goodKind=goodKind, goodNumberRemain=goodNumberRemain,
+#                                           goodInPrice=goodInPrice, goodSalePrice=goodSalePrice, goodPicPath=goodPicPath)
+#         # Good.objects.filter(id = id).update(goodName=goodName, goodKind=goodKind, goodNumberRemain=goodNumberRemain, goodInPrice=goodInPrice, goodSalePrice=goodSalePrice, goodPicPath=goodPicPath, goodTotalSale=goodTotalSale)
+#         return redirect('/sugarMarket/goodlist/')
 
 
-def orderListByNum(request, order):
-    # 查询一个订单的信息
-    itemlist = OrderItem.objects.all()
-    return render(request, 'orderdetails.html', {'itemlist': itemlist})
+# def historyOrder(request):
+#     # 查询全部订单号
+#     orderlist = Order.objects.all()
+#     # 创建分页器
+#     paginator = Paginator(orderlist, 20)  # 每页显示20条
+#     # 接受客户端发送的页码
+#     page = request.GET.get('page', 1)
+#    # 首页尾页
+#     try:
+#         orderlist = paginator.page(page)
+#     except EmptyPage:
+#         orderlist = paginator.page(1)
+#     except PageNotAnInteger:
+#         orderlist = paginator.page(paginator.num_pages)
+#     # 将商品集合传递到页面上
+#     return render(request, 'historyorder.html', {'orderlist': orderlist})
+
+
+# def orderListByNum(request, order):
+#     # 查询一个订单的信息
+#     itemlist = OrderItem.objects.all()
+#     return render(request, 'orderdetails.html', {'itemlist': itemlist})
+
+# def logout(request):
+#     return redirect('/sugarMarket/login/')
+
 
 
 def login(request):
@@ -269,15 +273,8 @@ def login(request):
             # 将账号信息加密存入cookie
             response = redirect('/sugarmarket/orders/')
             return response
-        elif name == 'admin' and pwd == '123456':
-            # 将账号信息加密存入cookie
-            response = redirect('/sugarMarket/admin/')
-            return response
         else:
             # 账号密码错误 
             return render(request, 'login.html',{'msg':'账号或密码错误'})
     else:
         return render(request, 'login.html')
-
-def logout(request):
-    return redirect('/sugarMarket/login/')

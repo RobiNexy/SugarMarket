@@ -9,18 +9,12 @@
 <body>
     <div style="width:100%;display:flex;justify-content: center;align-items: center;">
                 
-        <form action="/admin/" method="POST">
+        <form action="/sugarMarket/orders/" method="POST">
                 {% csrf_token %}
                 <div style="text-align:left"> 
-                <h1>用户登陆</h1>  
+                <h1>配送登陆</h1>  
                 <input placeholder="请输入登陆账号" type="text" name="username" value="{{ account }}">
                 <td>
-                <select name="loc">
-                <option>-请选择-</option>
-                <!-- <option>用户登陆</option> -->
-                <option>管理员登陆</option>
-                <option>配送员登陆</option>
-                </select>
                 </td><br><br>
                 <input type="password" placeholder="请输入登陆密码"  name="userpwd" id=""><br><br>
                 <div class="loginBoxButtons">
